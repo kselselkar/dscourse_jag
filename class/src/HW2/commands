@@ -1,0 +1,5 @@
+#install graphvz via brew
+dot -Tpdf u1.dot -o u1.pdf
+dot -Tpdf d1.dot -o d1.pdf
+dot -Tpdf uw1.dot -o uw1.pdf
+dot -Tpdf dw1.dot -o dw1.pdf
