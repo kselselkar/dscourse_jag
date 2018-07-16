@@ -45,17 +45,17 @@ class GraphMTSP {
         List<String[]> paths = new ArrayList<>();
         perm_r(pathMatrix, 0, pathMatrix.length - 1, paths, start);
         int nodeValue = 0;
-        boolean firstPath = false;
+        // boolean firstPath = false;
         boolean considerValue = true;
         for (String[] path : paths) {
-            if (firstPath) {
+            /*if (firstPath) {
                 System.out.println("node value " + nodeValue);
             }
             firstPath = true;
             for (String i : path) {
                 System.out.print(i + " ");
             }
-            System.out.println();
+            System.out.println();*/
             if (tspcost[0] == 0) {
                 tspcost[0] = nodeValue;
             } else if (considerValue && nodeValue <= tspcost[0]) {

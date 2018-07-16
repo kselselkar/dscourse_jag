@@ -66,8 +66,12 @@ class GraphM {
                 } else if (t1 == GraphMTester.GraphType.DIRECTED) {
                     graphMatrix[index1][index2] = 1;
                 } else if (t1 == GraphMTester.GraphType.WEIGHTED_UNDIRECTED) {
-                    graphMatrix[index1][index2] = Integer.parseInt(graphNodeArray[2]);
-                    graphMatrix[index2][index1] = Integer.parseInt(graphNodeArray[2]);
+                    int val = Integer.parseInt(graphNodeArray[2]);
+                    if (val == 0) {
+                        graphZeroValues.add(index1 + ":" + index2);
+                    }
+                    graphMatrix[index1][index2] = val;
+                    graphMatrix[index2][index1] = val;
                 } else if (t1 == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
                     int val = Integer.parseInt(graphNodeArray[2]);
                     if (val == 0) {
