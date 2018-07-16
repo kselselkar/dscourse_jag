@@ -1,4 +1,4 @@
-package HW1;
+package utils;
 /**
  * File Name: IntUtil.java 
  * All common routines that operates on basic type 'int'
@@ -7,9 +7,9 @@ package HW1;
  * @year 2014
  */
 import java.util.Random;
-class IntUtil{
+public class IntUtil{
 
-	IntUtil() {
+	public IntUtil() {
 
 	}
 

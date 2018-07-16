@@ -1,16 +1,14 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+package graph;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * File Name: GraphM.java
+ * File Name: graph.GraphM.java
  * Graph implementation
  * <p>
- * To Compile: IntUtil.java RandomInt.java GraphM.java
+ * To Compile: IntUtil.java RandomInt.java graph.GraphM.java
  *
  * @author Jagadeesh Vasudevamurthy
  * @year 2018
@@ -24,15 +22,11 @@ class GraphM {
 
     }
 
-    public int graphMatrix[][];
+    private int graphMatrix[][];
 
     private GraphMTester.GraphType t;
 
     private String[][] data;
-
-    private IntUtil u = new IntUtil();
-
-    public ArrayList<String> nodes=new ArrayList<>();
 
     public void buildGraph(GraphMTester.GraphType t1, String[][] e) {
         t = t1;
@@ -43,11 +37,9 @@ class GraphM {
             String[] stringArray = e[i];
             if (!graphIndexes.containsKey(stringArray[0])) {
                 graphIndexes.put(stringArray[0], index++);
-                nodes.add(stringArray[0]);
             }
             if (!graphIndexes.containsKey(stringArray[1])) {
                 graphIndexes.put(stringArray[1], index++);
-                nodes.add(stringArray[1]);
             }
         }
         graphMatrix = new int[index][index];
@@ -107,11 +99,11 @@ class GraphM {
                 writeDirectDotContent(content);
             } else if (t == GraphMTester.GraphType.WEIGHTED_UNDIRECTED) {
                 writeUndirectDotContent(content);
-            } else if (t == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
+            }else if (t == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
                 writeDirectDotContent(content);
             }
             content.append("}");
-            // System.out.println(content.toString());
+           // System.out.println(content.toString());
             File f = new File(baseFname);
             if (f.exists()) {
                 f.delete();
@@ -128,13 +120,13 @@ class GraphM {
         content.append("edge [color=red]");
         content.append("\n");
         Map<Integer, String> indexMatch = new HashMap<>();
-        if (t == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
+        if(t == GraphMTester.GraphType.WEIGHTED_DIRECTED){
             indexMatch.put(1, "A");
             indexMatch.put(2, "C");
             indexMatch.put(3, "D");
             indexMatch.put(4, "B");
             indexMatch.put(5, "E");
-        } else {
+        }else{
             indexMatch.put(1, "A");
             indexMatch.put(2, "B");
             indexMatch.put(3, "E");
@@ -175,43 +167,11 @@ class GraphM {
         }
     }
 
-    public int TSPBruteForce(String start, boolean show) {
-        //You cannot change anything below
-        //1 is the name of the algorithm that implements TSP with a complexity of factorial(n-1)
-        int[] cost = {0};
-        GraphMTSP t = new GraphMTSP(this, start, 1, cost, show);
-        return cost[0];
-    }
-
-    private void perm_r(int[] a, int s, int e) {
-        if (s == e) {
-            u.pLn(a);
-            return;
-        }
-        for (int i = s; i <= e; ++i) {
-            u.swap(a, i, s);
-            perm_r(a, s + 1, e);
-            u.swap(a, i, s);
-        }
-    }
-
-    public void perm(int n) {
-        int a[] = new int[n];
-        for (int i = 0; i < n; ++i) {
-            a[i] = i;
-        }
-        perm_r(a, 0, a.length - 1);
-    }
-
     public static void main(String[] args) {
 
-        System.out.println("GraphM STARTS");
-        System.out.println("use GraphMTester.java to test");
-        System.out.println("GraphM ENDS");
-        GraphM g=new GraphM();
-        int a[]={1,2,3};
-        g.perm_r(a,1,a.length-1);
-
+        System.out.println("graph.GraphM STARTS");
+        System.out.println("use graph.GraphMTester.java to test");
+        System.out.println("graph.GraphM ENDS");
 
 
     }
