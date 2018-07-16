@@ -45,21 +45,23 @@ class GraphMTSP {
         List<String[]> paths = new ArrayList<>();
         perm_r(pathMatrix, 0, pathMatrix.length - 1, paths, start);
         int nodeValue = 0;
-       // boolean firstPath = false;
+        boolean firstPath = false;
+        boolean considerValue = true;
         for (String[] path : paths) {
-            /*if (firstPath) {
+            if (firstPath) {
                 System.out.println("node value " + nodeValue);
             }
             firstPath = true;
             for (String i : path) {
                 System.out.print(i + " ");
             }
-            System.out.println();*/
+            System.out.println();
             if (tspcost[0] == 0) {
                 tspcost[0] = nodeValue;
-            } else if (nodeValue <= tspcost[0]) {
+            } else if (considerValue && nodeValue <= tspcost[0]) {
                 tspcost[0] = nodeValue;
             }
+            considerValue = true;
             nodeValue = 0;
             for (int i = 0; i < path.length; i++) {
                 int node1 = g.nodes.indexOf(path[i]);
@@ -70,6 +72,9 @@ class GraphMTSP {
                     int graphValue = graphMatrix[node1][node2];
                     if (graphValue != GraphMTester.INFINITY) {
                         nodeValue += graphValue;
+                    } else {
+                        considerValue = false;
+                        break;
                     }
                 }
             }
@@ -82,10 +87,10 @@ class GraphMTSP {
         if (s == e) {
             String postion = a[0];
             if (postion.equals(startPosition)) {
-                pLn(a);
                 String[] elements = Arrays.copyOf(a, a.length + 1);
                 elements[elements.length - 1] = startPosition;
                 paths.add(elements);
+                pLn(elements);
             }
             return;
         }

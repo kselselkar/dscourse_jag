@@ -1,7 +1,5 @@
 package HW1;
 
-import utils.IntUtil;
-
 /**
  * File Name: CalendarBase.java 
  * Calendar base class
@@ -21,7 +19,7 @@ abstract class CalendarBase{
 	protected int date ;
 	protected int year ;
 	protected Days day ;
-	protected IntUtil u = new IntUtil();
+	IntUtil u = new IntUtil();
 	
 	protected enum Days {
 		Sunday, Monday, Tuesday,Wednesday, Thursday, Friday, Saturday, Error ;

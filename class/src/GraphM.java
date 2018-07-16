@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,12 +33,15 @@ class GraphM {
 
     private IntUtil u = new IntUtil();
 
-    public ArrayList<String> nodes=new ArrayList<>();
+    public ArrayList<String> nodes = new ArrayList<>();
+
+    List<String> graphZeroValues = new ArrayList<>();
 
     public void buildGraph(GraphMTester.GraphType t1, String[][] e) {
         t = t1;
         data = e;
         HashMap<String, Integer> graphIndexes = new HashMap<>();
+
         int index = 0;
         for (int i = 0; i < e.length; i++) {
             String[] stringArray = e[i];
@@ -65,14 +69,19 @@ class GraphM {
                     graphMatrix[index1][index2] = Integer.parseInt(graphNodeArray[2]);
                     graphMatrix[index2][index1] = Integer.parseInt(graphNodeArray[2]);
                 } else if (t1 == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
-                    graphMatrix[index1][index2] = Integer.parseInt(graphNodeArray[2]);
+                    int val = Integer.parseInt(graphNodeArray[2]);
+                    if (val == 0) {
+                        graphZeroValues.add(index1 + ":" + index2);
+                    }
+                    graphMatrix[index1][index2] = val;
+
                 }
             }
         }
         if (t1 == GraphMTester.GraphType.WEIGHTED_UNDIRECTED || t1 == GraphMTester.GraphType.WEIGHTED_DIRECTED) {
             for (int i = 0; i < graphMatrix.length; i++) {
                 for (int j = 0; j < graphMatrix[i].length; j++) {
-                    if (i != j && graphMatrix[i][j] == 0) {
+                    if (i != j && graphMatrix[i][j] == 0 && (!(graphZeroValues.contains(i + ":" + j)))) {
                         graphMatrix[i][j] = GraphMTester.INFINITY;
                     }
 
@@ -86,7 +95,7 @@ class GraphM {
     public void printMatrix() {
         for (int i = 0; i < graphMatrix.length; i++) {
             for (int j = 0; j < graphMatrix[i].length; j++) {
-                if (graphMatrix[i][j] == GraphMTester.INFINITY) {
+                if (graphMatrix[i][j] == GraphMTester.INFINITY && (!(graphZeroValues.contains(i + ":" + j)))) {
                     System.out.print("L ");
                 } else {
                     System.out.print(graphMatrix[i][j] + " ");
@@ -183,36 +192,12 @@ class GraphM {
         return cost[0];
     }
 
-    private void perm_r(int[] a, int s, int e) {
-        if (s == e) {
-            u.pLn(a);
-            return;
-        }
-        for (int i = s; i <= e; ++i) {
-            u.swap(a, i, s);
-            perm_r(a, s + 1, e);
-            u.swap(a, i, s);
-        }
-    }
-
-    public void perm(int n) {
-        int a[] = new int[n];
-        for (int i = 0; i < n; ++i) {
-            a[i] = i;
-        }
-        perm_r(a, 0, a.length - 1);
-    }
 
     public static void main(String[] args) {
 
         System.out.println("GraphM STARTS");
         System.out.println("use GraphMTester.java to test");
         System.out.println("GraphM ENDS");
-        GraphM g=new GraphM();
-        int a[]={1,2,3};
-        g.perm_r(a,1,a.length-1);
-
-
-
+        GraphM g = new GraphM();
     }
 }
