@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 
 class GraphMTester {
+
     public enum GraphType {
         NONE, UNDIRECTED, DIRECTED, WEIGHTED_UNDIRECTED, WEIGHTED_DIRECTED
     }
