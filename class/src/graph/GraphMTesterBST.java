@@ -1,26 +1,23 @@
-import java.util.ArrayList;
+package graph;
 
 /**
  * File Name: GraphM.java
  * GraphM implementation
  * <p>
- * To Compile: IntUtil.java RandomInt.java GraphM.java GraphMTester.java
+ * To Compile: IntUtil.java RandomInt.java GraphM.java GraphMTesterBST.java
  *
  * @author Jagadeesh Vasudevamurthy
  * @year 2018
  */
 
-class GraphMTester {
+class GraphMTesterBST {
 
-    public enum GraphType {
-        NONE, UNDIRECTED, DIRECTED, WEIGHTED_UNDIRECTED, WEIGHTED_DIRECTED
-    }
 
     static final int UNCONNECTED = 0;
     static final int INFINITY = Integer.MAX_VALUE;
     private static final IntUtil u = new IntUtil();
 
-    GraphMTester() {
+    GraphMTesterBST() {
 
     }
 
@@ -142,8 +139,8 @@ class GraphMTester {
     }
 
     public static void main(String[] args) {
-        System.out.println("GraphMTester STARTS");
-        GraphMTester m = new GraphMTester();
+        System.out.println("GraphMTesterBST STARTS");
+        GraphMTesterBST m = new GraphMTesterBST();
         m.testBench();
         System.out.println("GraphM ENDS");
     }

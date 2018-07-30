@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * File Name: GraphM.java
- * Graph implementation
+ * GraphM implementation
  * <p>
  * To Compile: IntUtil.java RandomInt.java GraphM.java
  *

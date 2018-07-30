@@ -11,7 +11,7 @@ public class GraphBaseTest1 {
     }
 
     private void u1() {
-        Graph g = new Graph();
+        GraphM g = new GraphM();
         String[][] e = {
                 {"1", "2"},
                 {"1", "3"},
@@ -34,7 +34,7 @@ public class GraphBaseTest1 {
     }
 
     private void uw1() {
-        Graph g = new Graph();
+        GraphM g = new GraphM();
         String[][] e = {
                 {"1", "2", "6"},
                 {"1", "3", "1"},
@@ -54,7 +54,7 @@ public class GraphBaseTest1 {
     }
 
     private void d1() {
-        Graph g = new Graph();
+        GraphM g = new GraphM();
         String[][] e = {{"A", "B"},
                 {"E", "F"},
                 {"E", "D"},
@@ -70,7 +70,7 @@ public class GraphBaseTest1 {
     }
 
     private static void dw1() {
-        Graph g = new Graph();
+        GraphM g = new GraphM();
         String[][] e = {
                 {"A", "C", "12"},
                 {"A", "D", "60"},
@@ -98,9 +98,9 @@ public class GraphBaseTest1 {
 
 
     public static void main(String[] args) {
-        System.out.println("GraphMTester STARTS");
+        System.out.println("GraphMTesterBST STARTS");
         GraphBaseTest1 m = new GraphBaseTest1();
         m.testBench();
-        System.out.println("Graph ENDS");
+        System.out.println("GraphM ENDS");
     }
 }

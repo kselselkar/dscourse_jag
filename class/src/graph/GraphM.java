@@ -6,24 +6,24 @@ import java.util.HashMap;
 
 import static java.lang.Character.getName;
 
-public class Graph {
+public class GraphM {
 
     //number of vertices
-    private int numV;
+     int numV;
     //number of edges
-    private int numE;
+     int numE;
 
-    private int[][] m;
+     int[][] m;
 
-    private ArrayList<String> nodenames;
+     ArrayList<String> nodenames;
 
-    private HashMap<String, Integer> hm;
+     HashMap<String, Integer> hm;
 
-    private IntUtil u = new IntUtil();
+     IntUtil u = new IntUtil();
 
-    private GraphType t;
+     GraphType t;
 
-    public Graph() {
+    public GraphM() {
         numV = 0;
         numE = 0;
         t = GraphType.NONE;
@@ -101,6 +101,19 @@ public class Graph {
 
     }
 
+
+    public void dfs(String t,String s, boolean[] cycle, int[] work, ArrayList<String> ans) {
+        //CANNOT CHANGE ANYTHING HERE
+        GraphMDfs z = new GraphMDfs(t,this,s,cycle,work,ans) ;
+    }
+
+    public int TSPBruteForce(String start, boolean show) {
+        //You cannot change anything below
+        //1 is the name of the algorithm that implements TSP with a complexity of factorial(n-1)
+        int[] cost = {0};
+        GraphMTSP t = new GraphMTSP(this, start, 1, cost, show);
+        return cost[0];
+    }
 
 
     private int insertOrFind(String node, boolean elementPresent) {
